@@ -601,8 +601,11 @@ class Spreadsheet:
         )
 
         payload = {
-            "role": "writer",  # new owner must be writer in order to accept ownership by editing permissions
-            "pendingOwner": True,
+            "role": "owner",  # new owner must be writer in order to accept ownership by editing permissions
+        }
+        
+        params = {
+            "transferOwnership": True,
         }
 
         return self.client.request("patch", url, json=payload)
